@@ -1,6 +1,8 @@
-> This repository is the implementation of our paper "D-LIOM: Tightly-coupled Direct LiDAR-Inertial Odometry and Mapping" which is now early accessed at [IEEE Xplore](https://ieeexplore.ieee.org/document/9760190) or an unofficial version is available from this online [website](http://cslinzhang.gitee.io/home/files/D-LIOM.pdf). 
+## D-LIOM: Tightly-coupled Direct LiDAR-Inertial Odometry and Mapping
+
+> **Our paper**: we have corrected some typos and errors in Section III-D of the previous version of the paper, the revised version can be accessed [here](https://github.com/peterWon/D-LIOM/blob/master/paper/TMM_D_LIOM_FINAL_VERSION.pdf). When amending our paper, I would like to say thanks to [Sky Shaw](https://www.zhihu.com/people/carman-shaw-97), who has found my errors and warmly provided his suggestions.
 >
-> A running demo can be found at https://youtu.be/21J2QLUQbno or at https://www.bilibili.com/video/BV14y4y157du
+> **Related video:** A running demo can be found at https://youtu.be/21J2QLUQbno or at https://www.bilibili.com/video/BV14y4y157du.
 ---
 ### Sensor suite supported
 - 6-axis IMU + Velodyne/Ouster/Robosense LiDAR (Livox LiDAR can be also supported if the data of which is tansformed to the format of velodyne's, i.e., PointXYZRT.)
@@ -8,7 +10,12 @@
 ### Prerequisites
 - Install depends follow the instructions of ["cartographer"](https://google-cartographer.readthedocs.io/en/latest/index.html) and ["cartographer_ros"](https://google-cartographer-ros.readthedocs.io/en/latest/compilation.html) respectively. 
 - Build [OpenCV 3.3.1](https://opencv.org/releases/page/2/) (other version may work fine if it includes implementation of SURF keypoint detector) from source with "opencv_contrib"
-- [GTSAM 4.0.2](https://github.com/borglab/gtsam/tree/4.0.2)
+- Build [GTSAM 4.0.2](https://github.com/borglab/gtsam/tree/4.0.2) with compile options as follows:
+  
+  ```cmake -DGTSAM_USE_SYSTEM_EIGEN=ON -DGTSAM_WITH_TBB=OFF -DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF -DGTSAM_COMPILE_OPTIONS_PUBLIC="" ..```
+- Build [PCL 1.8.0]() with compile options as follows:
+  
+  ```cmake -DPCL_ENABLE_SSE=OFF ..```
 ---
 ### Build
 - Clone this repository in your ROS workspace
@@ -92,4 +99,5 @@
 - The authors of [cartographer_ros](https://github.com/cartographer-project/cartographer_ros)
 - The authors of [LIO-SAM](https://github.com/TixiaoShan/LIO-SAM)
 - The authors of [VINS-Mono](https://github.com/HKUST-Aerial-Robotics/VINS-Mono)
+- The authors of [VIO-Doc](https://github.com/StevenCui/VIO-Doc)
 
